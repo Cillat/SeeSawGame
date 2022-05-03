@@ -16,8 +16,9 @@ public class GameManager : MonoBehaviour
 
 
 
-    SceneFlag sceneFlag;
+    public SceneFlag sceneFlag;
     static float mPlayTime = 0f;
+    private float finishTime;
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +37,13 @@ public class GameManager : MonoBehaviour
         {
             Timer += Time.deltaTime;
         }
+        else if(sceneFlag == SceneFlag.Finish)
+        {
+            finishTime = Timer;
+            Debug.Log("Finish!!");
+        }
 
-        Debug.Log(Timer);
+        //Debug.Log(Timer);
     }
 
 
