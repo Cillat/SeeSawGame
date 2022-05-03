@@ -17,10 +17,9 @@ public class FinishJudge : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         gameManager.sceneFlag = GameManager.SceneFlag.Finish;
-
     }
 
 
