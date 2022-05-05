@@ -315,6 +315,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerHorse
       objectReference: {fileID: 0}
+    - target: {fileID: 1182029683073452, guid: 5d891f94d48551e439ac5b24a9ec00cc, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSelectAnimals
+      objectReference: {fileID: 0}
     - target: {fileID: 4487949865502146, guid: 5d891f94d48551e439ac5b24a9ec00cc, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -366,6 +370,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4487949865502146, guid: 5d891f94d48551e439ac5b24a9ec00cc, type: 3}
   m_PrefabInstance: {fileID: 63809697}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &63809699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1182029683073452, guid: 5d891f94d48551e439ac5b24a9ec00cc, type: 3}
+  m_PrefabInstance: {fileID: 63809697}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &63809700
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63809699}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300008, guid: 799f653f08c90c94c8b0126557609836, type: 3}
 --- !u!1001 &77356751
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -376,6 +399,10 @@ PrefabInstance:
     - target: {fileID: 1598459088720226, guid: 13ab75576c9285f498790e76c1a87c90, type: 3}
       propertyPath: m_Name
       value: PlayerMonkey
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598459088720226, guid: 13ab75576c9285f498790e76c1a87c90, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSelectAnimals
       objectReference: {fileID: 0}
     - target: {fileID: 4766148506136828, guid: 13ab75576c9285f498790e76c1a87c90, type: 3}
       propertyPath: m_RootOrder
@@ -428,6 +455,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4766148506136828, guid: 13ab75576c9285f498790e76c1a87c90, type: 3}
   m_PrefabInstance: {fileID: 77356751}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &77356753 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1598459088720226, guid: 13ab75576c9285f498790e76c1a87c90, type: 3}
+  m_PrefabInstance: {fileID: 77356751}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &77356754
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77356753}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300010, guid: 799f653f08c90c94c8b0126557609836, type: 3}
 --- !u!1001 &110680841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -603,6 +649,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerOx
       objectReference: {fileID: 0}
+    - target: {fileID: 1832056105147992, guid: 542eac6dcaa12ba4aae6437db06b46ee, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSelectAnimals
+      objectReference: {fileID: 0}
     - target: {fileID: 4010654077088804, guid: 542eac6dcaa12ba4aae6437db06b46ee, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -654,6 +704,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4010654077088804, guid: 542eac6dcaa12ba4aae6437db06b46ee, type: 3}
   m_PrefabInstance: {fileID: 121297817}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &121297819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1832056105147992, guid: 542eac6dcaa12ba4aae6437db06b46ee, type: 3}
+  m_PrefabInstance: {fileID: 121297817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &121297820
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121297819}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300012, guid: 799f653f08c90c94c8b0126557609836, type: 3}
 --- !u!1001 &132919681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -734,6 +803,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRat
       objectReference: {fileID: 0}
+    - target: {fileID: 1675308188217246, guid: 3cc9be1e4de713c4192e87916b6bab03, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSelectAnimals
+      objectReference: {fileID: 0}
     - target: {fileID: 4531104235746212, guid: 3cc9be1e4de713c4192e87916b6bab03, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -785,6 +858,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4531104235746212, guid: 3cc9be1e4de713c4192e87916b6bab03, type: 3}
   m_PrefabInstance: {fileID: 192108680}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &192108682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1675308188217246, guid: 3cc9be1e4de713c4192e87916b6bab03, type: 3}
+  m_PrefabInstance: {fileID: 192108680}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &192108683
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192108682}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300018, guid: 799f653f08c90c94c8b0126557609836, type: 3}
 --- !u!1 &197628118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2383,6 +2475,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerDog
       objectReference: {fileID: 0}
+    - target: {fileID: 1010573664472510, guid: 821bdb56c4110c841816df2632335cc6, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSelectAnimals
+      objectReference: {fileID: 0}
     - target: {fileID: 4910571214510634, guid: 821bdb56c4110c841816df2632335cc6, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -2434,6 +2530,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4910571214510634, guid: 821bdb56c4110c841816df2632335cc6, type: 3}
   m_PrefabInstance: {fileID: 787775229}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &787775231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1010573664472510, guid: 821bdb56c4110c841816df2632335cc6, type: 3}
+  m_PrefabInstance: {fileID: 787775229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &787775232
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787775231}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 799f653f08c90c94c8b0126557609836, type: 3}
 --- !u!1 &807446955
 GameObject:
   m_ObjectHideFlags: 0
@@ -2653,15 +2768,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4841403486027610, guid: e852a6b66b86e9a4ea1fdeb1ccc625bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -92.502
+      value: -96.436
       objectReference: {fileID: 0}
     - target: {fileID: 4841403486027610, guid: e852a6b66b86e9a4ea1fdeb1ccc625bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 3.061
       objectReference: {fileID: 0}
     - target: {fileID: 4841403486027610, guid: e852a6b66b86e9a4ea1fdeb1ccc625bc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.3
+      value: -0.92
       objectReference: {fileID: 0}
     - target: {fileID: 4841403486027610, guid: e852a6b66b86e9a4ea1fdeb1ccc625bc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2907,6 +3022,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerTiger
       objectReference: {fileID: 0}
+    - target: {fileID: 1736732376848332, guid: fb573fe406c53c740acf51407165ee68, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSelectAnimals
+      objectReference: {fileID: 0}
     - target: {fileID: 4941743527270764, guid: fb573fe406c53c740acf51407165ee68, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2958,6 +3077,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4941743527270764, guid: fb573fe406c53c740acf51407165ee68, type: 3}
   m_PrefabInstance: {fileID: 871233130}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &871233132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1736732376848332, guid: fb573fe406c53c740acf51407165ee68, type: 3}
+  m_PrefabInstance: {fileID: 871233130}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &871233133
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871233132}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300024, guid: 799f653f08c90c94c8b0126557609836, type: 3}
 --- !u!1 &876231442
 GameObject:
   m_ObjectHideFlags: 0
@@ -3248,15 +3386,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4408320134278776, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 91.68
+      value: 97.38
       objectReference: {fileID: 0}
     - target: {fileID: 4408320134278776, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.63
+      value: 2.191
       objectReference: {fileID: 0}
     - target: {fileID: 4408320134278776, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.97
+      value: -2.51
       objectReference: {fileID: 0}
     - target: {fileID: 4408320134278776, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3519,6 +3657,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerDragon
       objectReference: {fileID: 0}
+    - target: {fileID: 1180148154098208, guid: e852a6b66b86e9a4ea1fdeb1ccc625bc, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSelectAnimals
+      objectReference: {fileID: 0}
     - target: {fileID: 4841403486027610, guid: e852a6b66b86e9a4ea1fdeb1ccc625bc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3570,6 +3712,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4841403486027610, guid: e852a6b66b86e9a4ea1fdeb1ccc625bc, type: 3}
   m_PrefabInstance: {fileID: 1067163070}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1067163072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1180148154098208, guid: e852a6b66b86e9a4ea1fdeb1ccc625bc, type: 3}
+  m_PrefabInstance: {fileID: 1067163070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1067163073
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067163072}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300004, guid: 799f653f08c90c94c8b0126557609836, type: 3}
 --- !u!1 &1107936518
 GameObject:
   m_ObjectHideFlags: 0
@@ -4568,7 +4729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa3a4342943f4f838009b781a8648da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeSpan: 1
+  timeSpan: 10
 --- !u!114 &1421101882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4581,7 +4742,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89bd768530d794a06851e0abe36fd799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGameObjects: []
+  spawnFlag: 0
+  selectFlag: 0
+  selectAnimals: []
 --- !u!1001 &1432282820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4592,6 +4755,10 @@ PrefabInstance:
     - target: {fileID: 1503180181874650, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_Name
       value: PlayerCrane
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503180181874650, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSelectAnimals
       objectReference: {fileID: 0}
     - target: {fileID: 4408320134278776, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_RootOrder
@@ -4644,6 +4811,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4408320134278776, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
   m_PrefabInstance: {fileID: 1432282820}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1432282822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1503180181874650, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
+  m_PrefabInstance: {fileID: 1432282820}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1432282823
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432282822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 799f653f08c90c94c8b0126557609836, type: 3}
 --- !u!1 &1442088800 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1503180181874650, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
@@ -4910,6 +5096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRabbit
       objectReference: {fileID: 0}
+    - target: {fileID: 1940725992751248, guid: 36dbe61bd75ee1247b4f749534847ff0, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSelectAnimals
+      objectReference: {fileID: 0}
     - target: {fileID: 4098154856099424, guid: 36dbe61bd75ee1247b4f749534847ff0, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -4961,6 +5151,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4098154856099424, guid: 36dbe61bd75ee1247b4f749534847ff0, type: 3}
   m_PrefabInstance: {fileID: 1553906978}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1553906980 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1940725992751248, guid: 36dbe61bd75ee1247b4f749534847ff0, type: 3}
+  m_PrefabInstance: {fileID: 1553906978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1553906981
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553906980}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300016, guid: 799f653f08c90c94c8b0126557609836, type: 3}
 --- !u!1 &1574617545
 GameObject:
   m_ObjectHideFlags: 0
@@ -5464,6 +5673,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRooster
       objectReference: {fileID: 0}
+    - target: {fileID: 1965910811585682, guid: 96bace41c6a85b6479d537902bdcd0e8, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSelectAnimals
+      objectReference: {fileID: 0}
     - target: {fileID: 4555923442477812, guid: 96bace41c6a85b6479d537902bdcd0e8, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -5515,6 +5728,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4555923442477812, guid: 96bace41c6a85b6479d537902bdcd0e8, type: 3}
   m_PrefabInstance: {fileID: 1828387962}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1828387964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1965910811585682, guid: 96bace41c6a85b6479d537902bdcd0e8, type: 3}
+  m_PrefabInstance: {fileID: 1828387962}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1828387965
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828387964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300020, guid: 799f653f08c90c94c8b0126557609836, type: 3}
 --- !u!1 &1854570072
 GameObject:
   m_ObjectHideFlags: 0
@@ -5857,6 +6089,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSnake
       objectReference: {fileID: 0}
+    - target: {fileID: 1920191581749620, guid: a14fff62ccb8dfb4cb30aa2440d7e680, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSelectAnimals
+      objectReference: {fileID: 0}
     - target: {fileID: 4225525764850970, guid: a14fff62ccb8dfb4cb30aa2440d7e680, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -5908,6 +6144,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4225525764850970, guid: a14fff62ccb8dfb4cb30aa2440d7e680, type: 3}
   m_PrefabInstance: {fileID: 1910319843}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1910319845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1920191581749620, guid: a14fff62ccb8dfb4cb30aa2440d7e680, type: 3}
+  m_PrefabInstance: {fileID: 1910319843}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1910319846
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910319845}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300022, guid: 799f653f08c90c94c8b0126557609836, type: 3}
 --- !u!1 &1920634383
 GameObject:
   m_ObjectHideFlags: 0
@@ -6145,6 +6400,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerGoat
       objectReference: {fileID: 0}
+    - target: {fileID: 1749815345293910, guid: 4e58ae21638664c40b41bfceac2427a0, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSelectAnimals
+      objectReference: {fileID: 0}
     - target: {fileID: 4348737843171642, guid: 4e58ae21638664c40b41bfceac2427a0, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -6196,6 +6455,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4348737843171642, guid: 4e58ae21638664c40b41bfceac2427a0, type: 3}
   m_PrefabInstance: {fileID: 1935536276}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1935536278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1749815345293910, guid: 4e58ae21638664c40b41bfceac2427a0, type: 3}
+  m_PrefabInstance: {fileID: 1935536276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1935536279
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935536278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300006, guid: 799f653f08c90c94c8b0126557609836, type: 3}
 --- !u!1001 &1945237393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6629,6 +6907,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPig
       objectReference: {fileID: 0}
+    - target: {fileID: 1543346588463464, guid: 4242dcc21ff0bc1479e2bde7b663c464, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSelectAnimals
+      objectReference: {fileID: 0}
     - target: {fileID: 4400155920898508, guid: 4242dcc21ff0bc1479e2bde7b663c464, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -6680,6 +6962,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4400155920898508, guid: 4242dcc21ff0bc1479e2bde7b663c464, type: 3}
   m_PrefabInstance: {fileID: 2123927190}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2123927192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1543346588463464, guid: 4242dcc21ff0bc1479e2bde7b663c464, type: 3}
+  m_PrefabInstance: {fileID: 2123927190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &2123927193
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123927192}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300014, guid: 799f653f08c90c94c8b0126557609836, type: 3}
 --- !u!1 &1010574407760198 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1010573664472510, guid: 821bdb56c4110c841816df2632335cc6, type: 3}
