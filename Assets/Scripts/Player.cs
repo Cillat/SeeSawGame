@@ -60,5 +60,7 @@ public class Player : MonoBehaviour
             mSelectFlag = 0;
         }
 
+        Debug.Log(GameObject.Find("PlayerSelectAnimals/PlayerDragon"));
+
     }
 }
