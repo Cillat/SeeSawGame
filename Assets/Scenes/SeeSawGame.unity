@@ -1477,6 +1477,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crane
       objectReference: {fileID: 0}
+    - target: {fileID: 1503180181874650, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4408320134278776, guid: b3b64fffd0a01784bba52106fbea62f1, type: 3}
       propertyPath: m_RootOrder
       value: 3
