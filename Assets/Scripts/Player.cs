@@ -6,61 +6,127 @@ public class Player : MonoBehaviour
 {
 
     private GameManager gameManager;
-    private int mSelectFlag;
+    private GameObject[] mPlayerGameObjects;
+    private GameObject mPlayerChoice;
     private int[] mAnimalNum;
-    public GameObject[] playerGameObjects;
     private float mTime;
+    private float mMouseWheelScroll;
+    private float mMouseDepth;
+    private Vector3 mMousePos;
+    public int spawnFlag;
+    public int selectFlag;
+    public GameObject[] selectAnimals;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameStage/GameManager").GetComponent<GameManager>();
-        mSelectFlag = 0;
+        mPlayerChoice = null;
         mAnimalNum = new int[3];
-        playerGameObjects = new GameObject[13];
+        selectAnimals = new GameObject[3];
+        mPlayerGameObjects = new GameObject[13];
         mTime = 0f;
+        mMouseDepth = 0f;
+        spawnFlag = 0;
+        selectFlag = 0;
 
-        playerGameObjects[0] = GameObject.Find("PlayerSelectAnimals/PlayerRat");
-        playerGameObjects[1] = GameObject.Find("PlayerSelectAnimals/PlayerRabbit");
-        playerGameObjects[2] = GameObject.Find("PlayerSelectAnimals/PlayerRooster");
-        playerGameObjects[3] = GameObject.Find("PlayerSelectAnimals/PlayerCrane");
-        playerGameObjects[4] = GameObject.Find("PlayerSelectAnimals/PlayerSnake");
-        playerGameObjects[5] = GameObject.Find("PlayerSelectAnimals/PlayerDog");
-        playerGameObjects[6] = GameObject.Find("PlayerSelectAnimals/PlayerMonkey");
-        playerGameObjects[7] = GameObject.Find("PlayerSelectAnimals/PlayerGoat");
-        playerGameObjects[8] = GameObject.Find("PlayerSelectAnimals/PlayerPig");
-        playerGameObjects[9] = GameObject.Find("PlayerSelectAnimals/PlayerOx");
-        playerGameObjects[10] = GameObject.Find("PlayerSelectAnimals/PlayerHorse");
-        playerGameObjects[11] = GameObject.Find("PlayerSelectAnimals/PlayerTiger");
-        playerGameObjects[12] = GameObject.Find("PlayerSelectAnimals/PlayerDragon");
+        mPlayerGameObjects[0] = GameObject.Find("PlayerSelectAnimals/PlayerRat");
+        mPlayerGameObjects[1] = GameObject.Find("PlayerSelectAnimals/PlayerRabbit");
+        mPlayerGameObjects[2] = GameObject.Find("PlayerSelectAnimals/PlayerRooster");
+        mPlayerGameObjects[3] = GameObject.Find("PlayerSelectAnimals/PlayerCrane");
+        mPlayerGameObjects[4] = GameObject.Find("PlayerSelectAnimals/PlayerSnake");
+        mPlayerGameObjects[5] = GameObject.Find("PlayerSelectAnimals/PlayerDog");
+        mPlayerGameObjects[6] = GameObject.Find("PlayerSelectAnimals/PlayerMonkey");
+        mPlayerGameObjects[7] = GameObject.Find("PlayerSelectAnimals/PlayerGoat");
+        mPlayerGameObjects[8] = GameObject.Find("PlayerSelectAnimals/PlayerPig");
+        mPlayerGameObjects[9] = GameObject.Find("PlayerSelectAnimals/PlayerOx");
+        mPlayerGameObjects[10] = GameObject.Find("PlayerSelectAnimals/PlayerHorse");
+        mPlayerGameObjects[11] = GameObject.Find("PlayerSelectAnimals/PlayerTiger");
+        mPlayerGameObjects[12] = GameObject.Find("PlayerSelectAnimals/PlayerDragon");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(mSelectFlag == 0)
+        if (spawnFlag == 0)
         {
             mAnimalNum[0] = Random.Range(0, 13);
             mAnimalNum[1] = Random.Range(0, 13);
             mAnimalNum[2] = Random.Range(0, 13);
-            mSelectFlag = 1;
+            spawnFlag = 1;
 
-            Debug.Log(mAnimalNum[0] + "and" + mAnimalNum[1] + "and"  + mAnimalNum[2]);
-            Debug.Log(playerGameObjects[mAnimalNum[0]] + "and" + playerGameObjects[mAnimalNum[1]] + "and" + playerGameObjects[mAnimalNum[2]]);
-
-            Instantiate(playerGameObjects[mAnimalNum[0]], new Vector3(-97f, 0.7f, 5.3f) , Quaternion.identity);
-            Instantiate(playerGameObjects[mAnimalNum[1]], new Vector3(-100f, 0.7f, 5.3f), Quaternion.identity);
-            Instantiate(playerGameObjects[mAnimalNum[2]], new Vector3(-103f, 0.7f, 5.3f), Quaternion.identity);
+            selectAnimals[0] = Instantiate(mPlayerGameObjects[mAnimalNum[0]], new Vector3(-97f, 0.7f, 5.3f) , Quaternion.identity);
+            selectAnimals[1] = Instantiate(mPlayerGameObjects[mAnimalNum[1]], new Vector3(-100f, 0.7f, 5.3f), Quaternion.identity);
+            selectAnimals[2] = Instantiate(mPlayerGameObjects[mAnimalNum[2]], new Vector3(-103f, 0.7f, 5.3f), Quaternion.identity);
         }
 
-        mTime += Time.deltaTime;
-        if (mTime > 5f)
+        mMousePos = Input.mousePosition;
+        mMouseWheelScroll = Input.GetAxis("Mouse ScrollWheel");
+
+        if (mMouseWheelScroll > 0)
         {
-            mTime = 0f;
-            mSelectFlag = 0;
+            if (mMouseDepth > -2.5f)
+            {
+                mMouseDepth -= 0.01f;
+            }
+        }
+        else if (mMouseWheelScroll < 0)
+        {
+            if (mMouseDepth < 4.5f)
+            {
+                mMouseDepth += 0.01f;
+            }
         }
 
-        Debug.Log(GameObject.Find("PlayerSelectAnimals/PlayerDragon"));
+        mMousePos.z = mMouseDepth;
+        Camera gameCamera = Camera.main;
+        Vector3 touchWorldPosition = gameCamera.ScreenToWorldPoint(mMousePos);
+
+        if (selectFlag == 0)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("aaa");
+
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit = new RaycastHit();
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    Debug.Log(hit.collider.gameObject.tag);
+
+                    if(hit.collider.gameObject.CompareTag("PlayerSelectAnimals"))
+                    {
+                        Debug.Log(hit.collider.gameObject);
+
+                        selectFlag = 1;
+                        mPlayerChoice = Instantiate(hit.collider.gameObject, new Vector3(touchWorldPosition.x, 13f, touchWorldPosition.z), Quaternion.identity);
+                        mPlayerChoice.transform.localScale = new Vector3(3, 3, 3);
+                        mPlayerChoice.AddComponent<Rigidbody>();
+                        mPlayerChoice.AddComponent<ResetFlag>();
+
+                        Destroy(hit.collider.gameObject);
+                    }
+                }
+            }
+        }
+
+        else if (selectFlag == 1)
+        {
+            mPlayerChoice.transform.position = new Vector3(touchWorldPosition.x, 13f, touchWorldPosition.z);
+            if (Input.GetMouseButtonDown(0))
+            {
+                selectFlag = 2;
+            }
+        }
+
+
+//        mTime += Time.deltaTime;
+//        if (mTime > 5f)
+//        {
+//           mTime = 0f;
+//            spawnFlag = 0;
+//        }
 
     }
 }
