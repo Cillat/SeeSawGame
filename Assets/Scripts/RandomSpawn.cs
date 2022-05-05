@@ -19,7 +19,7 @@ public class RandomSpawn : MonoBehaviour
     {
         Random.InitState(System.DateTime.Now.Millisecond);
 
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameStage/GameManager").GetComponent<GameManager>();
         mTime = 0f;
 
     }

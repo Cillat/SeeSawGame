@@ -8,7 +8,7 @@ public class FinishJudge : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameStage/GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame

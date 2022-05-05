@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         gameObjects[5] = GameObject.Find("Animals/Dog");
         gameObjects[6] = GameObject.Find("Animals/Monkey");
         gameObjects[7] = GameObject.Find("Animals/Goat");
-        gameObjects[8] = GameObject.Find("Animals/pig");
+        gameObjects[8] = GameObject.Find("Animals/Pig");
         gameObjects[9] = GameObject.Find("Animals/Ox");
         gameObjects[10] = GameObject.Find("Animals/Horse");
         gameObjects[11] = GameObject.Find("Animals/Tiger");
