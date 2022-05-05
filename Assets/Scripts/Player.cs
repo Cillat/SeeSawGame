@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private GameManager gameManager;
     private GameObject[] mPlayerGameObjects;
     private GameObject mPlayerChoice;
+    private Camera mCamera;
     private int[] mAnimalNum;
     private float mTime;
     private float mMouseWheelScroll;
@@ -21,12 +22,13 @@ public class Player : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameStage/GameManager").GetComponent<GameManager>();
+        mCamera = GameObject.Find("GameStage/PlayerView/PlayerCamera").GetComponent<Camera>();
         mPlayerChoice = null;
         mAnimalNum = new int[3];
         selectAnimals = new GameObject[3];
         mPlayerGameObjects = new GameObject[13];
         mTime = 0f;
-        mMouseDepth = 0f;
+        mMouseDepth = 16.5f;
         spawnFlag = 0;
         selectFlag = 0;
 
@@ -61,38 +63,39 @@ public class Player : MonoBehaviour
         }
 
         mMousePos = Input.mousePosition;
+        Debug.Log(mMousePos);
         mMouseWheelScroll = Input.GetAxis("Mouse ScrollWheel");
 
         if (mMouseWheelScroll > 0)
         {
-            if (mMouseDepth > -2.5f)
+            if (mMouseDepth > 12.5f)
             {
-                mMouseDepth -= 0.01f;
+                mMouseDepth -= 0.5f;
             }
         }
         else if (mMouseWheelScroll < 0)
         {
-            if (mMouseDepth < 4.5f)
+            if (mMouseDepth < 19.5f)
             {
-                mMouseDepth += 0.01f;
+                mMouseDepth += 0.5f;
             }
         }
 
+        Debug.Log(mMouseDepth);
         mMousePos.z = mMouseDepth;
-        Camera gameCamera = Camera.main;
-        Vector3 touchWorldPosition = gameCamera.ScreenToWorldPoint(mMousePos);
+        Vector3 touchWorldPosition = mCamera.ScreenToWorldPoint(mMousePos);
 
         if (selectFlag == 0)
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("aaa");
-
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        
+                Ray ray = mCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit = new RaycastHit();
 
                 if (Physics.Raycast(ray, out hit))
                 {
+                    Debug.Log(hit.collider.gameObject.transform.position);
                     Debug.Log(hit.collider.gameObject.tag);
 
                     if(hit.collider.gameObject.CompareTag("PlayerSelectAnimals"))
@@ -101,9 +104,10 @@ public class Player : MonoBehaviour
 
                         selectFlag = 1;
                         mPlayerChoice = Instantiate(hit.collider.gameObject, new Vector3(touchWorldPosition.x, 13f, touchWorldPosition.z), Quaternion.identity);
-                        mPlayerChoice.transform.localScale = new Vector3(3, 3, 3);
+                        mPlayerChoice.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
                         mPlayerChoice.AddComponent<Rigidbody>();
                         mPlayerChoice.AddComponent<ResetFlag>();
+                        mPlayerChoice.AddComponent<DestroyAnimal>();
 
                         Destroy(hit.collider.gameObject);
                     }
