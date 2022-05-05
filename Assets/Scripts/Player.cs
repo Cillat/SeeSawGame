@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     private GameManager gameManager;
     private int mSelectFlag;
     private int[] mAnimalNum;
-    private GameObject[] playerGameObjects;
+    public GameObject[] playerGameObjects;
     private float mTime;
 
     // Start is called before the first frame update
@@ -40,10 +40,13 @@ public class Player : MonoBehaviour
     {
         if(mSelectFlag == 0)
         {
-            mAnimalNum[0] = Random.Range(1, 13);
-            mAnimalNum[1] = Random.Range(1, 13);
-            mAnimalNum[2] = Random.Range(1, 13);
+            mAnimalNum[0] = Random.Range(0, 13);
+            mAnimalNum[1] = Random.Range(0, 13);
+            mAnimalNum[2] = Random.Range(0, 13);
             mSelectFlag = 1;
+
+            Debug.Log(mAnimalNum[0] + "and" + mAnimalNum[1] + "and"  + mAnimalNum[2]);
+            Debug.Log(playerGameObjects[mAnimalNum[0]] + "and" + playerGameObjects[mAnimalNum[1]] + "and" + playerGameObjects[mAnimalNum[2]]);
 
             Instantiate(playerGameObjects[mAnimalNum[0]], new Vector3(-97f, 0.7f, 5.3f) , Quaternion.identity);
             Instantiate(playerGameObjects[mAnimalNum[1]], new Vector3(-100f, 0.7f, 5.3f), Quaternion.identity);
