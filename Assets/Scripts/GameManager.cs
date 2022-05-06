@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] gameObjects;
     public SceneFlag sceneFlag;
+    public float playerWeight;
+    public float enemyWeight;
     static float mPlayTime = 0f;
     private float finishTime;
 
@@ -24,6 +26,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         sceneFlag = SceneFlag.Playing;
+        playerWeight = 0f;
+        enemyWeight = 0f;
 
         gameObjects = new GameObject[13];
 
@@ -40,11 +44,14 @@ public class GameManager : MonoBehaviour
         gameObjects[10] = GameObject.Find("Animals/Horse");
         gameObjects[11] = GameObject.Find("Animals/Tiger");
         gameObjects[12] = GameObject.Find("Animals/Dragon");
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(playerWeight);
+
         if (sceneFlag == SceneFlag.PreStart)
         {
             Timer = 0f;
