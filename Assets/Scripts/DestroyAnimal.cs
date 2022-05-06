@@ -5,10 +5,12 @@ using UnityEngine;
 public class DestroyAnimal : MonoBehaviour
 {
     private GameObject mDeathFloor;
+    public int destroyFlag;
     // Start is called before the first frame update
     void Start()
     {
         mDeathFloor = GameObject.Find("GameStage/DeathFloor");
+        destroyFlag = 0;
     }
 
     // Update is called once per frame
@@ -21,8 +23,14 @@ public class DestroyAnimal : MonoBehaviour
     {
         if (collision.gameObject == mDeathFloor)
         {
-            Destroy(gameObject);    
-            Debug.Log("Destroy");
+            if (destroyFlag == 0)
+            {
+                Destroy(gameObject);
+                Debug.Log("Destroy");
+
+                destroyFlag = 1;
+            }
+
         }
     }
 }
