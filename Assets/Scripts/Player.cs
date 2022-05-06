@@ -66,14 +66,14 @@ public class Player : MonoBehaviour
         Debug.Log(mMousePos);
         mMouseWheelScroll = Input.GetAxis("Mouse ScrollWheel");
 
-        if (mMouseWheelScroll > 0)
+        if (mMouseWheelScroll > 0f)
         {
             if (mMouseDepth > 12.5f)
             {
                 mMouseDepth -= 0.5f;
             }
         }
-        else if (mMouseWheelScroll < 0)
+        else if (mMouseWheelScroll < 0f)
         {
             if (mMouseDepth < 19.5f)
             {
@@ -81,9 +81,20 @@ public class Player : MonoBehaviour
             }
         }
 
-        Debug.Log(mMouseDepth);
+
         mMousePos.z = mMouseDepth;
         Vector3 touchWorldPosition = mCamera.ScreenToWorldPoint(mMousePos);
+
+        if (touchWorldPosition.x < -103f)
+        {
+            touchWorldPosition.x = -103f;
+        }
+        else if (touchWorldPosition.x > -96f)
+        {
+            touchWorldPosition.x = -96f;
+        }
+
+        Debug.Log(touchWorldPosition);
 
         if (selectFlag == 0)
         {
