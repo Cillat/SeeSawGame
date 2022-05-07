@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
         Result
     }
 
-
-    public GameObject[] gameObjects;
     public SceneFlag sceneFlag;
     public float playerWeight;
     public float enemyWeight;
@@ -28,22 +26,6 @@ public class GameManager : MonoBehaviour
         sceneFlag = SceneFlag.Playing;
         playerWeight = 0f;
         enemyWeight = 0f;
-
-        gameObjects = new GameObject[13];
-
-        gameObjects[0] = GameObject.Find("Animals/Rat");
-        gameObjects[1] = GameObject.Find("Animals/Rabbit");
-        gameObjects[2] = GameObject.Find("Animals/Rooster");
-        gameObjects[3] = GameObject.Find("Animals/Crane");
-        gameObjects[4] = GameObject.Find("Animals/Snake");
-        gameObjects[5] = GameObject.Find("Animals/Dog");
-        gameObjects[6] = GameObject.Find("Animals/Monkey");
-        gameObjects[7] = GameObject.Find("Animals/Goat");
-        gameObjects[8] = GameObject.Find("Animals/Pig");
-        gameObjects[9] = GameObject.Find("Animals/Ox");
-        gameObjects[10] = GameObject.Find("Animals/Horse");
-        gameObjects[11] = GameObject.Find("Animals/Tiger");
-        gameObjects[12] = GameObject.Find("Animals/Dragon");
 
     }
 

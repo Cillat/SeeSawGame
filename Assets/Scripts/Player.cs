@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private float mMouseWheelScroll;
     private float mMouseDepth;
     private Vector3 mMousePos;
+    private Vector3 touchWorldPosition;
 
     public int spawnFlag;
     public int selectFlag;
@@ -98,7 +99,7 @@ public class Player : MonoBehaviour
 
 
         mMousePos.z = mMouseDepth;
-        Vector3 touchWorldPosition = mCamera.ScreenToWorldPoint(mMousePos);
+        touchWorldPosition = mCamera.ScreenToWorldPoint(mMousePos);
 
         if (touchWorldPosition.x < -103f)
         {
