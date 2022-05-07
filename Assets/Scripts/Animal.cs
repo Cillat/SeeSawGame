@@ -26,33 +26,33 @@ public class Animal : MonoBehaviour
 
         incrementCount = 1f;
 
-        playerAnimalNames[0] = GameObject.Find("PlayerSelectAnimals/PlayerRat");
-        playerAnimalNames[1] = GameObject.Find("PlayerSelectAnimals/PlayerRabbit");
-        playerAnimalNames[2] = GameObject.Find("PlayerSelectAnimals/PlayerRooster");
-        playerAnimalNames[3] = GameObject.Find("PlayerSelectAnimals/PlayerCrane");
-        playerAnimalNames[4] = GameObject.Find("PlayerSelectAnimals/PlayerSnake");
-        playerAnimalNames[5] = GameObject.Find("PlayerSelectAnimals/PlayerDog");
-        playerAnimalNames[6] = GameObject.Find("PlayerSelectAnimals/PlayerMonkey");
-        playerAnimalNames[7] = GameObject.Find("PlayerSelectAnimals/PlayerGoat");
-        playerAnimalNames[8] = GameObject.Find("PlayerSelectAnimals/PlayerPig");
-        playerAnimalNames[9] = GameObject.Find("PlayerSelectAnimals/PlayerOx");
-        playerAnimalNames[10] = GameObject.Find("PlayerSelectAnimals/PlayerHorse");
-        playerAnimalNames[11] = GameObject.Find("PlayerSelectAnimals/PlayerTiger");
-        playerAnimalNames[12] = GameObject.Find("PlayerSelectAnimals/PlayerDragon");
+        playerAnimalNames[0] = GameObject.Find("PlayerAnimals/PlayerRat");
+        playerAnimalNames[1] = GameObject.Find("PlayerAnimals/PlayerRabbit");
+        playerAnimalNames[2] = GameObject.Find("PlayerAnimals/PlayerRooster");
+        playerAnimalNames[3] = GameObject.Find("PlayerAnimals/PlayerCrane");
+        playerAnimalNames[4] = GameObject.Find("PlayerAnimals/PlayerSnake");
+        playerAnimalNames[5] = GameObject.Find("PlayerAnimals/PlayerDog");
+        playerAnimalNames[6] = GameObject.Find("PlayerAnimals/PlayerMonkey");
+        playerAnimalNames[7] = GameObject.Find("PlayerAnimals/PlayerGoat");
+        playerAnimalNames[8] = GameObject.Find("PlayerAnimals/PlayerPig");
+        playerAnimalNames[9] = GameObject.Find("PlayerAnimals/PlayerOx");
+        playerAnimalNames[10] = GameObject.Find("PlayerAnimals/PlayerHorse");
+        playerAnimalNames[11] = GameObject.Find("PlayerAnimals/PlayerTiger");
+        playerAnimalNames[12] = GameObject.Find("PlayerAnimals/PlayerDragon");
 
-        enemyAnimalNames[0] = GameObject.Find("Animals/Rat");
-        enemyAnimalNames[1] = GameObject.Find("Animals/Rabbit");
-        enemyAnimalNames[2] = GameObject.Find("Animals/Rooster");
-        enemyAnimalNames[3] = GameObject.Find("Animals/Crane");
-        enemyAnimalNames[4] = GameObject.Find("Animals/Snake");
-        enemyAnimalNames[5] = GameObject.Find("Animals/Dog");
-        enemyAnimalNames[6] = GameObject.Find("Animals/Monkey");
-        enemyAnimalNames[7] = GameObject.Find("Animals/Goat");
-        enemyAnimalNames[8] = GameObject.Find("Animals/Pig");
-        enemyAnimalNames[9] = GameObject.Find("Animals/Ox");
-        enemyAnimalNames[10] = GameObject.Find("Animals/Horse");
-        enemyAnimalNames[11] = GameObject.Find("Animals/Tiger");
-        enemyAnimalNames[12] = GameObject.Find("Animals/Dragon");
+        enemyAnimalNames[0] = GameObject.Find("EnemyAnimals/Rat");
+        enemyAnimalNames[1] = GameObject.Find("EnemyAnimals/Rabbit");
+        enemyAnimalNames[2] = GameObject.Find("EnemyAnimals/Rooster");
+        enemyAnimalNames[3] = GameObject.Find("EnemyAnimals/Crane");
+        enemyAnimalNames[4] = GameObject.Find("EnemyAnimals/Snake");
+        enemyAnimalNames[5] = GameObject.Find("EnemyAnimals/Dog");
+        enemyAnimalNames[6] = GameObject.Find("EnemyAnimals/Monkey");
+        enemyAnimalNames[7] = GameObject.Find("EnemyAnimals/Goat");
+        enemyAnimalNames[8] = GameObject.Find("EnemyAnimals/Pig");
+        enemyAnimalNames[9] = GameObject.Find("EnemyAnimals/Ox");
+        enemyAnimalNames[10] = GameObject.Find("EnemyAnimals/Horse");
+        enemyAnimalNames[11] = GameObject.Find("EnemyAnimals/Tiger");
+        enemyAnimalNames[12] = GameObject.Find("EnemyAnimals/Dragon");
 
 
         for (int i = 0; i < 13; i++)
@@ -73,6 +73,7 @@ public class Animal : MonoBehaviour
         }
         
 
+        Debug.Log(playerAnimals[5].playerAnimalName);
 
 
     }

@@ -5,11 +5,11 @@ using UnityEngine;
 public class RandomSpawn : MonoBehaviour
 {
 
-    private GameManager gameManager;
 
 
     public float timeSpan;
 
+    private Animal mAnimal;
     private float mTime;
     private int mRandomNumber;
     private Vector3 mRandomPosition;
@@ -19,7 +19,7 @@ public class RandomSpawn : MonoBehaviour
     {
         Random.InitState(System.DateTime.Now.Millisecond);
 
-        gameManager = GameObject.Find("GameStage/GameManager").GetComponent<GameManager>();
+        mAnimal = GameObject.Find("GameStage/GameManager").GetComponent<Animal>();
         mTime = 0f;
 
     }
@@ -35,7 +35,7 @@ public class RandomSpawn : MonoBehaviour
             mRandomNumber = Random.Range(0, 13);
             mRandomPosition = new Vector3(Random.Range(96f, 102f), 13f, Random.Range(0f, 7.0f)-2.5f);
             mRandomAngle = new Vector3(Random.Range(0f, 180f), Random.Range(0f, 180f), Random.Range(0f, 180f));
-            Instantiate(gameManager.gameObjects[mRandomNumber], mRandomPosition, Quaternion.Euler(mRandomAngle));
+            Instantiate(mAnimal.enemyAnimals[mRandomNumber].enemyAnimalName, mRandomPosition, Quaternion.Euler(mRandomAngle));
 
         }
 
