@@ -33,35 +33,8 @@ public class Player : MonoBehaviour
         mMouseDepth = 16.5f;
         spawnFlag = 0;
         selectFlag = 0;
-
-
-        //dicPlayerGameObjects = new Dictionary<int, Dictionary<GameObject, float>>()
-        //{
-            //{ 0, new Dictionary<GameObject, float>{ { GameObject.Find("PlayerSelectAnimals/PlayerRat"), 1f } } },
-            //{ 1, new Dictionary<GameObject, float>{ { GameObject.Find("PlayerSelectAnimals/PlayerRabbit"), 2f } } },
-            //{ 2, new Dictionary<GameObject, float>{ { GameObject.Find("PlayerSelectAnimals/PlayerRooster"), 3f } } },
-            //{ 3, new Dictionary<GameObject, float>{ { GameObject.Find("PlayerSelectAnimals/PlayerCrane"), 4f } } },
-            //{ 4, new Dictionary<GameObject, float>{ { GameObject.Find("PlayerSelectAnimals/PlayerSnake"), 5f } } },
-            //{ 5, new Dictionary<GameObject, float>{ { GameObject.Find("PlayerSelectAnimals/PlayerDog"), 6f } } },
-            //{ 6, new Dictionary<GameObject, float>{ { GameObject.Find("PlayerSelectAnimals/PlayerMonkey"), 7f } } },
-            //{ 7, new Dictionary<GameObject, float>{ { GameObject.Find("PlayerSelectAnimals/PlayerGoat"), 8f } } },
-            //{ 8, new Dictionary<GameObject, float>{ { GameObject.Find("PlayerSelectAnimals/PlayerPig"), 9f } } },
-            //{ 9, new Dictionary<GameObject, float>{ { GameObject.Find("PlayerSelectAnimals/PlayerOx"), 10f } } },
-            //{ 10,new Dictionary<GameObject, float>{ { GameObject.Find("PlayerSelectAnimals/PlayerHorse"), 11f } } },
-            //{ 11,new Dictionary<GameObject, float>{ { GameObject.Find("PlayerSelectAnimals/PlayerTiger"), 12f } } },
-            //{ 12,new Dictionary<GameObject, float>{ { GameObject.Find("PlayerSelectAnimals/PlayerDragon"), 13f } } },
-
-        //};
     }
 
-        //mDicAnimalKeys = new GameObject[dicPlayerGameObjects.Count];
-
-        //foreach (var kv in dicPlayerGameObjects)
-        //{
-         //   dicPlayerGameObjects.Keys.CopyTo(mDicAnimalKeys, kv.Value);
-        //}
-
-    // Update is called once per frame
     void Update()
     {
 
@@ -132,7 +105,6 @@ public class Player : MonoBehaviour
                         selectFlag = 1;
                         mPlayerChoice = Instantiate(hit.collider.gameObject, new Vector3(touchWorldPosition.x, 13f, touchWorldPosition.z), Quaternion.identity);
                         mPlayerChoice.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
-                        mPlayerChoice.AddComponent<Rigidbody>();
                         mPlayerChoice.AddComponent<ResetFlag>();
                         mPlayerChoice.AddComponent<DestroyAnimal>();
                         mPlayerChoice.AddComponent<PlayerAnimalWeight>();
@@ -146,8 +118,43 @@ public class Player : MonoBehaviour
         else if (selectFlag == 1)
         {
             mPlayerChoice.transform.position = new Vector3(touchWorldPosition.x, 13f, touchWorldPosition.z);
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                mPlayerChoice.transform.Rotate(new Vector3(3.0f, 0f, 0f));
+            }
+
+            if (Input.GetKey(KeyCode.X))
+            {
+                mPlayerChoice.transform.Rotate(new Vector3(-3.0f, 0f, 0f));
+            }
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                mPlayerChoice.transform.Rotate(new Vector3(0f, 3f, 0f));
+            }
+
+            if (Input.GetKey(KeyCode.Z))
+            {
+                mPlayerChoice.transform.Rotate(new Vector3(0f, -3f, 0f));
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                mPlayerChoice.transform.Rotate(new Vector3(0f, 0f, 3f));
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                mPlayerChoice.transform.Rotate(new Vector3(0f, 0f, -3f));
+            }
+
+
+
+
             if (Input.GetMouseButtonDown(0))
             {
+                mPlayerChoice.AddComponent<Rigidbody>();
                 selectFlag = 2;
             }
         }
