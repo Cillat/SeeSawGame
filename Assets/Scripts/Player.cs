@@ -101,6 +101,7 @@ public class Player : MonoBehaviour
                     if(hit.collider.gameObject.CompareTag("PlayerSelectAnimals"))
                     {
                         //Debug.Log(hit.collider.gameObject);
+                        AudioManager.Instance.PlaySE("Selected");
 
                         selectFlag = 1;
                         mPlayerChoice = Instantiate(hit.collider.gameObject, new Vector3(touchWorldPosition.x, 13f, touchWorldPosition.z), Quaternion.identity);
