@@ -4130,7 +4130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1218131187}
   m_Layer: 0
-  m_Name: Animals
+  m_Name: EnemyAnimals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4506,7 +4506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1359741917}
   m_Layer: 0
-  m_Name: PlayerSelectAnimals
+  m_Name: PlayerAnimals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
