@@ -44,9 +44,9 @@ public class Player : MonoBehaviour
             mAnimalNum[1] = Random.Range(0, 13);
             mAnimalNum[2] = Random.Range(0, 13);
 
-            selectAnimals[0] = Instantiate(mAnimal.playerAnimals[mAnimalNum[0]].playerAnimalName, new Vector3(-97f, 0.7f, 5.3f) , Quaternion.identity);
-            selectAnimals[1] = Instantiate(mAnimal.playerAnimals[mAnimalNum[1]].playerAnimalName, new Vector3(-100f, 0.7f, 5.3f), Quaternion.identity);
-            selectAnimals[2] = Instantiate(mAnimal.playerAnimals[mAnimalNum[2]].playerAnimalName, new Vector3(-103f, 0.7f, 5.3f), Quaternion.identity);
+            selectAnimals[0] = Instantiate(mAnimal.animals[mAnimalNum[0]].prefab, new Vector3(-97f, 0.7f, 5.3f) , Quaternion.identity);
+            selectAnimals[1] = Instantiate(mAnimal.animals[mAnimalNum[1]].prefab, new Vector3(-100f, 0.7f, 5.3f), Quaternion.identity);
+            selectAnimals[2] = Instantiate(mAnimal.animals[mAnimalNum[2]].prefab, new Vector3(-103f, 0.7f, 5.3f), Quaternion.identity);
 
             spawnFlag = 1;
         }
@@ -95,19 +95,15 @@ public class Player : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    //Debug.Log(hit.collider.gameObject.transform.position);
-                    //Debug.Log(hit.collider.gameObject.tag);
-
-                    if(hit.collider.gameObject.CompareTag("PlayerSelectAnimals"))
+                    if(hit.collider.gameObject.CompareTag("Animals"))
                     {
-                        //Debug.Log(hit.collider.gameObject);
                         AudioManager.Instance.PlaySE("Selected");
 
                         selectFlag = 1;
                         mPlayerChoice = Instantiate(hit.collider.gameObject, new Vector3(touchWorldPosition.x, 13f, touchWorldPosition.z), Quaternion.identity);
                         mPlayerChoice.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
                         mPlayerChoice.AddComponent<ResetFlag>();
-                        mPlayerChoice.AddComponent<DestroyAnimal>();
+                        mPlayerChoice.AddComponent<DestroyPlayerAnimal>();
                         mPlayerChoice.AddComponent<PlayerAnimalWeight>();
 
                         Destroy(hit.collider.gameObject);
@@ -125,7 +121,7 @@ public class Player : MonoBehaviour
                 mPlayerChoice.transform.Rotate(new Vector3(3.0f, 0f, 0f));
             }
 
-            if (Input.GetKey(KeyCode.X))
+            if (Input.GetKey(KeyCode.S))
             {
                 mPlayerChoice.transform.Rotate(new Vector3(-3.0f, 0f, 0f));
             }
@@ -135,7 +131,7 @@ public class Player : MonoBehaviour
                 mPlayerChoice.transform.Rotate(new Vector3(0f, 3f, 0f));
             }
 
-            if (Input.GetKey(KeyCode.Z))
+            if (Input.GetKey(KeyCode.Q))
             {
                 mPlayerChoice.transform.Rotate(new Vector3(0f, -3f, 0f));
             }
@@ -149,8 +145,6 @@ public class Player : MonoBehaviour
             {
                 mPlayerChoice.transform.Rotate(new Vector3(0f, 0f, -3f));
             }
-
-
 
 
             if (Input.GetMouseButtonDown(0))

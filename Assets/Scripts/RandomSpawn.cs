@@ -10,6 +10,7 @@ public class RandomSpawn : MonoBehaviour
     public float timeSpan;
 
     private Animal mAnimal;
+    private GameObject mRandomSpawn;
     private float mTime;
     private int mRandomNumber;
     private Vector3 mRandomPosition;
@@ -33,9 +34,13 @@ public class RandomSpawn : MonoBehaviour
         {
             mTime = 0f;
             mRandomNumber = Random.Range(0, 13);
-            mRandomPosition = new Vector3(Random.Range(96f, 102f), 13f, Random.Range(0f, 7.0f)-2.5f);
+            mRandomPosition = new Vector3(Random.Range(97f, 102f), 13f, Random.Range(0f, 6.5f)-2.5f);
             mRandomAngle = new Vector3(Random.Range(0f, 180f), Random.Range(0f, 180f), Random.Range(0f, 180f));
-            Instantiate(mAnimal.enemyAnimals[mRandomNumber].enemyAnimalName, mRandomPosition, Quaternion.Euler(mRandomAngle));
+            mRandomSpawn =  Instantiate(mAnimal.animals[mRandomNumber].prefab, mRandomPosition, Quaternion.Euler(mRandomAngle));
+
+            mRandomSpawn.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
+            mRandomSpawn.AddComponent<Rigidbody>();
+            mRandomSpawn.AddComponent<DestroyEnemyAnimal>();
 
         }
 
