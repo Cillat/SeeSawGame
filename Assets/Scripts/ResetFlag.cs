@@ -22,29 +22,27 @@ public class ResetFlag : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (mPlayer.selectFlag == 2)
+        if (mPlayer.selectFlag == 2 && mCollisionFlag == 0)
         {
-            if (mCollisionFlag == 0)
+            mCollisionFlag = 1;
+            mPlayer.selectFlag = 0;
+            mPlayer.spawnFlag = 0;
+
+            if (mPlayer.selectAnimals[0] != null)
             {
-                mCollisionFlag = 1;
-                mPlayer.selectFlag = 0;
-                mPlayer.spawnFlag = 0;
-
-                if (mPlayer.selectAnimals[0] != null)
-                {
-                    Destroy(mPlayer.selectAnimals[0]);
-                }
-
-                if (mPlayer.selectAnimals[1] != null)
-                {
-                    Destroy(mPlayer.selectAnimals[1]);
-                }
-
-                if (mPlayer.selectAnimals[2] != null)
-                {
-                    Destroy(mPlayer.selectAnimals[2]);
-                }
+                Destroy(mPlayer.selectAnimals[0]);
             }
+
+            if (mPlayer.selectAnimals[1] != null)
+            {
+                Destroy(mPlayer.selectAnimals[1]);
+            }
+
+            if (mPlayer.selectAnimals[2] != null)
+            {
+                Destroy(mPlayer.selectAnimals[2]);
+            }
+            
         }
     }
 }

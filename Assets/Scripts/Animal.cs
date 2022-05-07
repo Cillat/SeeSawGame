@@ -5,75 +5,47 @@ using UnityEngine;
 public class Animal : MonoBehaviour
 {
 
-    public  List<PlayerAnimals> playerAnimals;
-    public  List<EnemyAnimals> enemyAnimals;
-    private GameObject[] playerAnimalNames;
-    private GameObject[] enemyAnimalNames;
-    private PlayerAnimals registerPlayerAnimals;
-    private EnemyAnimals registerEnemyAnimals;
-    private float incrementCount;
+    public  List<Animals> animals;
+    private GameObject[] mAnimals;
+    private Animals mRegisterAnimals;
+    private float mIncrementCount;
     
     // Start is called before the first frame update
     void Start()
     {
-        playerAnimals = new List<PlayerAnimals>();
-        enemyAnimals = new List<EnemyAnimals>();
-        playerAnimalNames = new GameObject[13];
-        enemyAnimalNames = new GameObject[13];
+        animals = new List<Animals>();
+        mAnimals = new GameObject[13];
+        mRegisterAnimals = new Animals();
+        mIncrementCount = 1f;
 
-        registerPlayerAnimals = new PlayerAnimals();
-        registerEnemyAnimals = new EnemyAnimals();
-
-        incrementCount = 1f;
-
-        playerAnimalNames[0] = GameObject.Find("PlayerAnimals/PlayerRat");
-        playerAnimalNames[1] = GameObject.Find("PlayerAnimals/PlayerRabbit");
-        playerAnimalNames[2] = GameObject.Find("PlayerAnimals/PlayerRooster");
-        playerAnimalNames[3] = GameObject.Find("PlayerAnimals/PlayerCrane");
-        playerAnimalNames[4] = GameObject.Find("PlayerAnimals/PlayerSnake");
-        playerAnimalNames[5] = GameObject.Find("PlayerAnimals/PlayerDog");
-        playerAnimalNames[6] = GameObject.Find("PlayerAnimals/PlayerMonkey");
-        playerAnimalNames[7] = GameObject.Find("PlayerAnimals/PlayerGoat");
-        playerAnimalNames[8] = GameObject.Find("PlayerAnimals/PlayerPig");
-        playerAnimalNames[9] = GameObject.Find("PlayerAnimals/PlayerOx");
-        playerAnimalNames[10] = GameObject.Find("PlayerAnimals/PlayerHorse");
-        playerAnimalNames[11] = GameObject.Find("PlayerAnimals/PlayerTiger");
-        playerAnimalNames[12] = GameObject.Find("PlayerAnimals/PlayerDragon");
-
-        enemyAnimalNames[0] = GameObject.Find("EnemyAnimals/Rat");
-        enemyAnimalNames[1] = GameObject.Find("EnemyAnimals/Rabbit");
-        enemyAnimalNames[2] = GameObject.Find("EnemyAnimals/Rooster");
-        enemyAnimalNames[3] = GameObject.Find("EnemyAnimals/Crane");
-        enemyAnimalNames[4] = GameObject.Find("EnemyAnimals/Snake");
-        enemyAnimalNames[5] = GameObject.Find("EnemyAnimals/Dog");
-        enemyAnimalNames[6] = GameObject.Find("EnemyAnimals/Monkey");
-        enemyAnimalNames[7] = GameObject.Find("EnemyAnimals/Goat");
-        enemyAnimalNames[8] = GameObject.Find("EnemyAnimals/Pig");
-        enemyAnimalNames[9] = GameObject.Find("EnemyAnimals/Ox");
-        enemyAnimalNames[10] = GameObject.Find("EnemyAnimals/Horse");
-        enemyAnimalNames[11] = GameObject.Find("EnemyAnimals/Tiger");
-        enemyAnimalNames[12] = GameObject.Find("EnemyAnimals/Dragon");
+        mAnimals[0] = GameObject.Find("Animals/Rat");
+        mAnimals[1] = GameObject.Find("Animals/Rabbit");
+        mAnimals[2] = GameObject.Find("Animals/Rooster");
+        mAnimals[3] = GameObject.Find("Animals/Crane");
+        mAnimals[4] = GameObject.Find("Animals/Snake");
+        mAnimals[5] = GameObject.Find("Animals/Dog");
+        mAnimals[6] = GameObject.Find("Animals/Monkey");
+        mAnimals[7] = GameObject.Find("Animals/Goat");
+        mAnimals[8] = GameObject.Find("Animals/Pig");
+        mAnimals[9] = GameObject.Find("Animals/Ox");
+        mAnimals[10] = GameObject.Find("Animals/Horse");
+        mAnimals[11] = GameObject.Find("Animals/Tiger");
+        mAnimals[12] = GameObject.Find("Animals/Dragon");
 
 
         for (int i = 0; i < 13; i++)
         {
-            registerPlayerAnimals.playerId = i;
-            registerPlayerAnimals.playerAnimalName = playerAnimalNames[i];
-            registerPlayerAnimals.playerAnimalWeight = incrementCount;
+            mRegisterAnimals.id = i;
+            mRegisterAnimals.name = mAnimals[i].name;
+            mRegisterAnimals.weight = mIncrementCount;
+            mRegisterAnimals.prefab = mAnimals[i]; 
 
-            registerEnemyAnimals.enemyId = i;
-            registerEnemyAnimals.enemyAnimalName = enemyAnimalNames[i];
-            registerEnemyAnimals.enemyWeight = incrementCount;
+            mIncrementCount += 1f;
 
-            incrementCount += 1f;
+            animals.Add(mRegisterAnimals);
 
-            playerAnimals.Add(registerPlayerAnimals);
-            enemyAnimals.Add(registerEnemyAnimals);
 
         }
-        
-
-        Debug.Log(playerAnimals[5].playerAnimalName);
 
 
     }
@@ -84,17 +56,11 @@ public class Animal : MonoBehaviour
         
     }
 
-    public struct PlayerAnimals
+    public struct Animals
     {
-        public int playerId;
-        public GameObject playerAnimalName;
-        public float playerAnimalWeight;
-    }
-
-    public struct EnemyAnimals
-    {
-        public int enemyId;
-        public GameObject enemyAnimalName;
-        public float enemyWeight;
+        public int id;
+        public string name;
+        public float weight;
+        public GameObject prefab;
     }
 }
