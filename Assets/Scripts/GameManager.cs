@@ -18,7 +18,11 @@ public class GameManager : MonoBehaviour
     public float playerWeight;
     public float enemyWeight;
     static float mPlayTime = 0f;
+    private GameObject mSeeSaw;
+    private float mDifferenceWeight;
+    private float mLeanGain;
     private float finishTime;
+    private float mTime;
 
     // Start is called before the first frame update
     void Start()
@@ -26,13 +30,29 @@ public class GameManager : MonoBehaviour
         sceneFlag = SceneFlag.Playing;
         playerWeight = 0f;
         enemyWeight = 0f;
+        mSeeSaw = GameObject.Find("GameStage/SeeSawView/WholeSeeSaw/SeeSaw");
+        mTime = 0;
+        mDifferenceWeight = 0f;
+        mLeanGain = 0f;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(playerWeight);
+        mTime += Time.deltaTime;
+        mDifferenceWeight = (playerWeight - enemyWeight) * 1000;
+        mLeanGain = mDifferenceWeight / 10000000f;
+
+        mSeeSaw.transform.Rotate(new Vector3(0f, 0f, mLeanGain));
+
+
+        if (mTime > 5f)
+        {
+            mTime = 0f;
+            Debug.Log("PlayerWeightSum = " + playerWeight);
+            Debug.Log("EnemyWeightSum = " + enemyWeight);
+        }
 
         if (sceneFlag == SceneFlag.PreStart)
         {
@@ -48,7 +68,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Finish!!");
         }
 
-        //Debug.Log(Timer);
+        
     }
 
 
