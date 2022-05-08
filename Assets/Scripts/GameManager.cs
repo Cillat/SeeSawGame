@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
         Start,
         Playing,
         Finish,
+        PreResult,
         Result
     }
 
@@ -45,28 +46,12 @@ public class GameManager : MonoBehaviour
         mTime = 0;
         mDifferenceWeight = 0f;
         mLeanGain = 0f;
-
-        mFinishSound = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         mTime += Time.deltaTime;
-        mDifferenceWeight = (playerWeight - enemyWeight) * 100;
-        mLeanGain = mDifferenceWeight / 150000f;
-
-        mSeeSaw.transform.Rotate(new Vector3(0f, 0f, mLeanGain));
-        mPlayerBox.transform.Rotate(new Vector3(-1 * mLeanGain, 0f, 0f));
-        mEnemyBox.transform.Rotate(new Vector3(0f, 0f, mLeanGain));
-
-
-        if (mTime > 5f)
-        {
-            mTime = 0f;
-            Debug.Log("PlayerWeightSum = " + playerWeight);
-            Debug.Log("EnemyWeightSum = " + enemyWeight);
-        }
 
         if (sceneFlag == SceneFlag.PreStart)
         {
@@ -75,24 +60,36 @@ public class GameManager : MonoBehaviour
         else if (sceneFlag == SceneFlag.Playing)
         {
             Timer += Time.deltaTime;
+
+            mDifferenceWeight = (playerWeight - enemyWeight) * 100;
+            mLeanGain = mDifferenceWeight / 150000f;
+
+            mSeeSaw.transform.Rotate(new Vector3(0f, 0f, mLeanGain));
+            mPlayerBox.transform.Rotate(new Vector3(-1 * mLeanGain, 0f, 0f));
+            mEnemyBox.transform.Rotate(new Vector3(0f, 0f, mLeanGain));
+
         }
         else if(sceneFlag == SceneFlag.Finish)
         {
             finishTime = Timer;
 
-            if(mFinishSound == 0)
-            {
-                mFinishSound = 1;
-                Debug.Log("Finish!!");
-                mAudioManager.FadeOutBGM();
-                AudioManager.Instance.PlaySE("Finish");
+            mAudioManager.FadeOutBGM();
+            AudioManager.Instance.PlaySE("Finish");
 
-            }
+
+            sceneFlag = SceneFlag.PreResult;
+            Invoke("ResultSceneLoad", 3.0f);
+
         }
 
         
     }
 
+    void ResultSceneLoad()
+    {
+        AudioManager.Instance.PlayBGM("Result");
+        sceneFlag = SceneFlag.Result;
+    }
 
     public float Timer
     {
