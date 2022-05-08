@@ -41,6 +41,7 @@ public class RandomSpawn : MonoBehaviour
             mRandomSpawn.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
             mRandomSpawn.AddComponent<Rigidbody>();
             mRandomSpawn.AddComponent<DestroyEnemyAnimal>();
+            mRandomSpawn.AddComponent<EnemyAnimalWeight>();
 
         }
 
