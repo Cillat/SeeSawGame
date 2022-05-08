@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         mPlayerChoice = null;
         mAnimalNum = new int[3];
         selectAnimals = new GameObject[3];
-        mMouseDepth = 16.5f;
+        mMouseDepth = 19.0f;
         spawnFlag = 0;
         selectFlag = 0;
     }
@@ -42,9 +42,9 @@ public class Player : MonoBehaviour
             mAnimalNum[1] = Random.Range(0, 13);
             mAnimalNum[2] = Random.Range(0, 13);
 
-            selectAnimals[0] = Instantiate(mAnimal.animals[mAnimalNum[0]].prefab, new Vector3(-97f, 0.7f, 5.3f) , Quaternion.identity);
-            selectAnimals[1] = Instantiate(mAnimal.animals[mAnimalNum[1]].prefab, new Vector3(-100f, 0.7f, 5.3f), Quaternion.identity);
-            selectAnimals[2] = Instantiate(mAnimal.animals[mAnimalNum[2]].prefab, new Vector3(-103f, 0.7f, 5.3f), Quaternion.identity);
+            selectAnimals[0] = Instantiate(mAnimal.animals[mAnimalNum[0]].prefab, new Vector3(-97f, -1.5f, 5.3f) , Quaternion.identity);
+            selectAnimals[1] = Instantiate(mAnimal.animals[mAnimalNum[1]].prefab, new Vector3(-100f, -1.5f, 5.3f), Quaternion.identity);
+            selectAnimals[2] = Instantiate(mAnimal.animals[mAnimalNum[2]].prefab, new Vector3(-103f, -1.5f, 5.3f), Quaternion.identity);
 
             spawnFlag = 1;
         }
@@ -55,14 +55,14 @@ public class Player : MonoBehaviour
 
         if (mMouseWheelScroll > 0f)
         {
-            if (mMouseDepth > 12.5f)
+            if (mMouseDepth > 15.2f)
             {
                 mMouseDepth -= 0.5f;
             }
         }
         else if (mMouseWheelScroll < 0f)
         {
-            if (mMouseDepth < 19.5f)
+            if (mMouseDepth < 23.0f)
             {
                 mMouseDepth += 0.5f;
             }
@@ -149,6 +149,8 @@ public class Player : MonoBehaviour
             {
                 mPlayerChoice.AddComponent<Rigidbody>();
                 selectFlag = 2;
+                AudioManager.Instance.PlaySE("Fall");
+
             }
         }
     }

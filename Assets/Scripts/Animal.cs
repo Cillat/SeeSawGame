@@ -18,19 +18,19 @@ public class Animal : MonoBehaviour
         mRegisterAnimals = new Animals();
         mIncrementCount = 1f;
 
-        mAnimals[0] = GameObject.Find("Animals/Rat");
-        mAnimals[1] = GameObject.Find("Animals/Rabbit");
-        mAnimals[2] = GameObject.Find("Animals/Rooster");
-        mAnimals[3] = GameObject.Find("Animals/Crane");
-        mAnimals[4] = GameObject.Find("Animals/Snake");
-        mAnimals[5] = GameObject.Find("Animals/Dog");
-        mAnimals[6] = GameObject.Find("Animals/Monkey");
-        mAnimals[7] = GameObject.Find("Animals/Goat");
-        mAnimals[8] = GameObject.Find("Animals/Pig");
-        mAnimals[9] = GameObject.Find("Animals/Ox");
-        mAnimals[10] = GameObject.Find("Animals/Horse");
-        mAnimals[11] = GameObject.Find("Animals/Tiger");
-        mAnimals[12] = GameObject.Find("Animals/Dragon");
+        mAnimals[0] = GameObject.Find("GameStage/Animals/Rat");
+        mAnimals[1] = GameObject.Find("GameStage/Animals/Rabbit");
+        mAnimals[2] = GameObject.Find("GameStage/Animals/Rooster");
+        mAnimals[3] = GameObject.Find("GameStage/Animals/Crane");
+        mAnimals[4] = GameObject.Find("GameStage/Animals/Snake");
+        mAnimals[5] = GameObject.Find("GameStage/Animals/Dog");
+        mAnimals[6] = GameObject.Find("GameStage/Animals/Monkey");
+        mAnimals[7] = GameObject.Find("GameStage/Animals/Goat");
+        mAnimals[8] = GameObject.Find("GameStage/Animals/Pig");
+        mAnimals[9] = GameObject.Find("GameStage/Animals/Ox");
+        mAnimals[10] = GameObject.Find("GameStage/Animals/Horse");
+        mAnimals[11] = GameObject.Find("GameStage/Animals/Tiger");
+        mAnimals[12] = GameObject.Find("GameStage/Animals/Dragon");
 
 
         for (int i = 0; i < 13; i++)
