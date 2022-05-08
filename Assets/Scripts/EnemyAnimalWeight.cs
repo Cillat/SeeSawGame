@@ -8,17 +8,18 @@ public class EnemyAnimalWeight : MonoBehaviour
     private GameManager mGamemanager;
     private float mWeight;
     private string mAnimalName;
+    private int mPlusFlag;
 
     // Start is called before the first frame update
     void Start()
     {
         mAnimalName = this.gameObject.name.Replace("(Clone)", "");
+        mPlusFlag = 0;
 
         mGamemanager = GameObject.Find("GameStage/GameManager").GetComponent<GameManager>();
         mAnimal = GameObject.Find("GameStage/GameManager").GetComponent<Animal>();
         mWeight = mAnimal.animals.Find(animal => mAnimalName == animal.name).weight;
 
-        mGamemanager.playerWeight += mWeight;
 
     }
 
@@ -30,6 +31,15 @@ public class EnemyAnimalWeight : MonoBehaviour
 
     public void minus()
     {
-        mGamemanager.playerWeight -= mWeight;
+        mGamemanager.enemyWeight -= mWeight;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (mPlusFlag == 0)
+        {
+            mPlusFlag = 1;
+            mGamemanager.enemyWeight += mWeight;
+        }
     }
 }

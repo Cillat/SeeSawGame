@@ -5,13 +5,13 @@ using UnityEngine;
 public class ResetFlag : MonoBehaviour
 {
 
+    public int collisionFlag;
     private Player mPlayer;
-    private int mCollisionFlag;
     // Start is called before the first frame update
     void Start()
     {
         mPlayer = GameObject.Find("GameStage/GameManager").GetComponent<Player>();
-        mCollisionFlag = 0;
+        collisionFlag = 0;
     }
 
     // Update is called once per frame
@@ -22,9 +22,9 @@ public class ResetFlag : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (mPlayer.selectFlag == 2 && mCollisionFlag == 0)
+        if (mPlayer.selectFlag == 2 && collisionFlag == 0)
         {
-            mCollisionFlag = 1;
+            collisionFlag = 1;
             mPlayer.selectFlag = 0;
             mPlayer.spawnFlag = 0;
 

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public int spawnFlag;
+    public int selectFlag;
+    public GameObject[] selectAnimals;
 
     private GameManager gameManager;
     private GameObject mPlayerChoice;
@@ -15,11 +18,6 @@ public class Player : MonoBehaviour
     private Vector3 mMousePos;
     private Vector3 touchWorldPosition;
 
-    public int spawnFlag;
-    public int selectFlag;
-    public Dictionary<int, Dictionary<GameObject,float>> dicPlayerGameObjects;
-    public GameObject[] selectAnimals;
-    public GameObject[] mDicAnimalKeys;
 
     // Start is called before the first frame update
     void Start()
