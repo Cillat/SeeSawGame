@@ -4,78 +4,65 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
-    private GameManager gameManager;
-    private GameObject[] mPlayerGameObjects;
-    private GameObject mPlayerChoice;
-    private Camera mCamera;
-    private int[] mAnimalNum;
-    private float mTime;
-    private float mMouseWheelScroll;
-    private float mMouseDepth;
-    private Vector3 mMousePos;
     public int spawnFlag;
     public int selectFlag;
     public GameObject[] selectAnimals;
+
+    private GameManager gameManager;
+    private GameObject mPlayerChoice;
+    private Camera mCamera;
+    private Animal mAnimal;
+    private int[] mAnimalNum;
+    private float mMouseWheelScroll;
+    private float mMouseDepth;
+    private Vector3 mMousePos;
+    private Vector3 touchWorldPosition;
+
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameStage/GameManager").GetComponent<GameManager>();
+        mAnimal = GameObject.Find("GameStage/GameManager").GetComponent<Animal>();
         mCamera = GameObject.Find("GameStage/PlayerView/PlayerCamera").GetComponent<Camera>();
         mPlayerChoice = null;
         mAnimalNum = new int[3];
         selectAnimals = new GameObject[3];
-        mPlayerGameObjects = new GameObject[13];
-        mTime = 0f;
-        mMouseDepth = 16.5f;
+        mMouseDepth = 19.0f;
         spawnFlag = 0;
         selectFlag = 0;
-
-        mPlayerGameObjects[0] = GameObject.Find("PlayerSelectAnimals/PlayerRat");
-        mPlayerGameObjects[1] = GameObject.Find("PlayerSelectAnimals/PlayerRabbit");
-        mPlayerGameObjects[2] = GameObject.Find("PlayerSelectAnimals/PlayerRooster");
-        mPlayerGameObjects[3] = GameObject.Find("PlayerSelectAnimals/PlayerCrane");
-        mPlayerGameObjects[4] = GameObject.Find("PlayerSelectAnimals/PlayerSnake");
-        mPlayerGameObjects[5] = GameObject.Find("PlayerSelectAnimals/PlayerDog");
-        mPlayerGameObjects[6] = GameObject.Find("PlayerSelectAnimals/PlayerMonkey");
-        mPlayerGameObjects[7] = GameObject.Find("PlayerSelectAnimals/PlayerGoat");
-        mPlayerGameObjects[8] = GameObject.Find("PlayerSelectAnimals/PlayerPig");
-        mPlayerGameObjects[9] = GameObject.Find("PlayerSelectAnimals/PlayerOx");
-        mPlayerGameObjects[10] = GameObject.Find("PlayerSelectAnimals/PlayerHorse");
-        mPlayerGameObjects[11] = GameObject.Find("PlayerSelectAnimals/PlayerTiger");
-        mPlayerGameObjects[12] = GameObject.Find("PlayerSelectAnimals/PlayerDragon");
     }
 
-    // Update is called once per frame
     void Update()
     {
+
         if (spawnFlag == 0)
         {
             mAnimalNum[0] = Random.Range(0, 13);
             mAnimalNum[1] = Random.Range(0, 13);
             mAnimalNum[2] = Random.Range(0, 13);
-            spawnFlag = 1;
 
-            selectAnimals[0] = Instantiate(mPlayerGameObjects[mAnimalNum[0]], new Vector3(-97f, 0.7f, 5.3f) , Quaternion.identity);
-            selectAnimals[1] = Instantiate(mPlayerGameObjects[mAnimalNum[1]], new Vector3(-100f, 0.7f, 5.3f), Quaternion.identity);
-            selectAnimals[2] = Instantiate(mPlayerGameObjects[mAnimalNum[2]], new Vector3(-103f, 0.7f, 5.3f), Quaternion.identity);
+            selectAnimals[0] = Instantiate(mAnimal.animals[mAnimalNum[0]].prefab, new Vector3(-97f, -1.5f, 5.3f) , Quaternion.identity);
+            selectAnimals[1] = Instantiate(mAnimal.animals[mAnimalNum[1]].prefab, new Vector3(-100f, -1.5f, 5.3f), Quaternion.identity);
+            selectAnimals[2] = Instantiate(mAnimal.animals[mAnimalNum[2]].prefab, new Vector3(-103f, -1.5f, 5.3f), Quaternion.identity);
+
+            spawnFlag = 1;
         }
 
         mMousePos = Input.mousePosition;
-        Debug.Log(mMousePos);
+        //Debug.Log(mMousePos);
         mMouseWheelScroll = Input.GetAxis("Mouse ScrollWheel");
 
         if (mMouseWheelScroll > 0f)
         {
-            if (mMouseDepth > 12.5f)
+            if (mMouseDepth > 15.2f)
             {
                 mMouseDepth -= 0.5f;
             }
         }
         else if (mMouseWheelScroll < 0f)
         {
-            if (mMouseDepth < 19.5f)
+            if (mMouseDepth < 23.0f)
             {
                 mMouseDepth += 0.5f;
             }
@@ -83,7 +70,7 @@ public class Player : MonoBehaviour
 
 
         mMousePos.z = mMouseDepth;
-        Vector3 touchWorldPosition = mCamera.ScreenToWorldPoint(mMousePos);
+        touchWorldPosition = mCamera.ScreenToWorldPoint(mMousePos);
 
         if (touchWorldPosition.x < -103f)
         {
@@ -94,7 +81,7 @@ public class Player : MonoBehaviour
             touchWorldPosition.x = -96f;
         }
 
-        Debug.Log(touchWorldPosition);
+        //Debug.Log(touchWorldPosition);
 
         if (selectFlag == 0)
         {
@@ -106,19 +93,16 @@ public class Player : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    Debug.Log(hit.collider.gameObject.transform.position);
-                    Debug.Log(hit.collider.gameObject.tag);
-
-                    if(hit.collider.gameObject.CompareTag("PlayerSelectAnimals"))
+                    if(hit.collider.gameObject.CompareTag("Animals"))
                     {
-                        Debug.Log(hit.collider.gameObject);
+                        AudioManager.Instance.PlaySE("Selected");
 
                         selectFlag = 1;
                         mPlayerChoice = Instantiate(hit.collider.gameObject, new Vector3(touchWorldPosition.x, 13f, touchWorldPosition.z), Quaternion.identity);
                         mPlayerChoice.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
-                        mPlayerChoice.AddComponent<Rigidbody>();
                         mPlayerChoice.AddComponent<ResetFlag>();
-                        mPlayerChoice.AddComponent<DestroyAnimal>();
+                        mPlayerChoice.AddComponent<DestroyPlayerAnimal>();
+                        mPlayerChoice.AddComponent<PlayerAnimalWeight>();
 
                         Destroy(hit.collider.gameObject);
                     }
@@ -129,19 +113,45 @@ public class Player : MonoBehaviour
         else if (selectFlag == 1)
         {
             mPlayerChoice.transform.position = new Vector3(touchWorldPosition.x, 13f, touchWorldPosition.z);
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                mPlayerChoice.transform.Rotate(new Vector3(3.0f, 0f, 0f));
+            }
+
+            if (Input.GetKey(KeyCode.S))
+            {
+                mPlayerChoice.transform.Rotate(new Vector3(-3.0f, 0f, 0f));
+            }
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                mPlayerChoice.transform.Rotate(new Vector3(0f, 3f, 0f));
+            }
+
+            if (Input.GetKey(KeyCode.Q))
+            {
+                mPlayerChoice.transform.Rotate(new Vector3(0f, -3f, 0f));
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                mPlayerChoice.transform.Rotate(new Vector3(0f, 0f, 3f));
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                mPlayerChoice.transform.Rotate(new Vector3(0f, 0f, -3f));
+            }
+
+
             if (Input.GetMouseButtonDown(0))
             {
+                mPlayerChoice.AddComponent<Rigidbody>();
                 selectFlag = 2;
+                AudioManager.Instance.PlaySE("Fall");
+
             }
         }
-
-
-//        mTime += Time.deltaTime;
-//        if (mTime > 5f)
-//        {
-//           mTime = 0f;
-//            spawnFlag = 0;
-//        }
-
     }
 }
