@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public enum SceneFlag
     {
-        BeforeStart,
-        PreStart,
-        Start,
         Playing,
         Finish,
         PreResult,
@@ -27,23 +25,20 @@ public class GameManager : MonoBehaviour
     private float mDifferenceWeight;
     private float mLeanGain;
     private float finishTime;
-    private float mTime;
 
     private int mFinishSound;
 
     // Start is called before the first frame update
     void Start()
     {
-        AudioManager.Instance.PlayBGM("Main");
-
+        Timer = 0f;
         sceneFlag = SceneFlag.Playing;
         playerWeight = 0f;
         enemyWeight = 0f;
-        mAudioManager = this.gameObject.GetComponent<AudioManager>();
+        mAudioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         mSeeSaw = GameObject.Find("GameStage/SeeSawView/WholeSeeSaw/SeeSaw");
         mPlayerBox = GameObject.Find("GameStage/PlayerView/PlayerBoxes");
         mEnemyBox = GameObject.Find("GameStage/EnemyView/EnemyBoxes");
-        mTime = 0;
         mDifferenceWeight = 0f;
         mLeanGain = 0f;
     }
@@ -51,13 +46,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mTime += Time.deltaTime;
-
-        if (sceneFlag == SceneFlag.PreStart)
-        {
-            Timer = 0f;
-        }
-        else if (sceneFlag == SceneFlag.Playing)
+        if (sceneFlag == SceneFlag.Playing)
         {
             Timer += Time.deltaTime;
 
@@ -69,6 +58,7 @@ public class GameManager : MonoBehaviour
             mEnemyBox.transform.Rotate(new Vector3(0f, 0f, mLeanGain));
 
         }
+
         else if(sceneFlag == SceneFlag.Finish)
         {
             finishTime = Timer;
