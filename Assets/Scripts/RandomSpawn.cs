@@ -12,6 +12,7 @@ public class RandomSpawn : MonoBehaviour
     private Animal mAnimal;
     private GameObject mRandomSpawn;
     private float mTime;
+    private int mCount;
     private int mRandomNumber;
     private Vector3 mRandomPosition;
     private Vector3 mRandomAngle;
@@ -21,7 +22,9 @@ public class RandomSpawn : MonoBehaviour
         Random.InitState(System.DateTime.Now.Millisecond);
 
         mAnimal = GameObject.Find("GameStage/GameManager").GetComponent<Animal>();
+        timeSpan = 7f;
         mTime = 0f;
+        mCount = 0;
 
     }
 
@@ -42,6 +45,17 @@ public class RandomSpawn : MonoBehaviour
             mRandomSpawn.AddComponent<Rigidbody>();
             mRandomSpawn.AddComponent<DestroyEnemyAnimal>();
             mRandomSpawn.AddComponent<EnemyAnimalWeight>();
+
+            mCount += 1;
+
+            if (mCount > 5)
+            {
+                if(timeSpan > 1f)
+                {
+                    timeSpan -= 0.5f;
+                    mCount = 0;
+                }
+            }
 
         }
 
