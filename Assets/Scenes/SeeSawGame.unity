@@ -3769,7 +3769,6 @@ GameObject:
   - component: {fileID: 1421101881}
   - component: {fileID: 1421101882}
   - component: {fileID: 1421101883}
-  - component: {fileID: 1421101884}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3806,6 +3805,7 @@ MonoBehaviour:
   sceneFlag: 0
   playerWeight: 0
   enemyWeight: 0
+  finishTime: 0
 --- !u!81 &1421101880
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3826,7 +3826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa3a4342943f4f838009b781a8648da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeSpan: 3
+  timeSpan: 1
 --- !u!114 &1421101882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3852,18 +3852,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0250470b6cf2444f891f6ee13c2f7a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1421101884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1421101877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35b0e312461fc489dbde34f491961295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1489797846
