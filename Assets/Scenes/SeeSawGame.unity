@@ -3805,6 +3805,7 @@ MonoBehaviour:
   sceneFlag: 0
   playerWeight: 0
   enemyWeight: 0
+  finishTime: 0
 --- !u!81 &1421101880
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3825,7 +3826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa3a4342943f4f838009b781a8648da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeSpan: 3
+  timeSpan: 1
 --- !u!114 &1421101882
 MonoBehaviour:
   m_ObjectHideFlags: 0
