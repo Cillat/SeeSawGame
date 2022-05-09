@@ -16,17 +16,16 @@ public class GameManager : MonoBehaviour
     public SceneFlag sceneFlag;
     public float playerWeight;
     public float enemyWeight;
+    public float finishTime;
 
     private AudioManager mAudioManager;
+    private GameObject mAudioManager_obj;
     private GameObject mSeeSaw;
     private GameObject mPlayerBox;
     private GameObject mEnemyBox;
     private static  float mPlayTime = 0f;
     private float mDifferenceWeight;
     private float mLeanGain;
-    private float finishTime;
-
-    private int mFinishSound;
 
     // Start is called before the first frame update
     void Start()
@@ -35,10 +34,13 @@ public class GameManager : MonoBehaviour
         sceneFlag = SceneFlag.Playing;
         playerWeight = 0f;
         enemyWeight = 0f;
-        mAudioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        mAudioManager_obj = GameObject.Find("AudioManager");
+        mAudioManager = mAudioManager_obj.GetComponent<AudioManager>();
         mSeeSaw = GameObject.Find("GameStage/SeeSawView/WholeSeeSaw/SeeSaw");
         mPlayerBox = GameObject.Find("GameStage/PlayerView/PlayerBoxes");
         mEnemyBox = GameObject.Find("GameStage/EnemyView/EnemyBoxes");
+        mAudioManager_obj.AddComponent<FinishTime>();
+
         mDifferenceWeight = 0f;
         mLeanGain = 0f;
     }
@@ -79,6 +81,7 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.Instance.PlayBGM("Result");
         sceneFlag = SceneFlag.Result;
+        SceneManager.LoadScene("Result");
     }
 
     public float Timer
