@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public enum SceneFlag
     {
+        Title,
         Playing,
         Finish,
         PreResult,
@@ -16,38 +18,46 @@ public class GameManager : MonoBehaviour
     public SceneFlag sceneFlag;
     public float playerWeight;
     public float enemyWeight;
-    public float finishTime;
 
     private AudioManager mAudioManager;
-    private GameObject mAudioManager_obj;
-    private GameObject mSeeSaw;
-    private GameObject mPlayerBox;
-    private GameObject mEnemyBox;
+    public GameObject mSeeSaw;
+    public GameObject mPlayerBox;
+    public GameObject mEnemyBox;
+    private Text mResultTime;
     private static  float mPlayTime = 0f;
     private float mDifferenceWeight;
     private float mLeanGain;
 
+    private int mFlag;
+
     // Start is called before the first frame update
     void Start()
     {
-        Timer = 0f;
-        sceneFlag = SceneFlag.Playing;
-        playerWeight = 0f;
-        enemyWeight = 0f;
-        mAudioManager_obj = GameObject.Find("AudioManager");
-        mAudioManager = mAudioManager_obj.GetComponent<AudioManager>();
-        mSeeSaw = GameObject.Find("GameStage/SeeSawView/WholeSeeSaw/SeeSaw");
-        mPlayerBox = GameObject.Find("GameStage/PlayerView/PlayerBoxes");
-        mEnemyBox = GameObject.Find("GameStage/EnemyView/EnemyBoxes");
-        mAudioManager_obj.AddComponent<FinishTime>();
+        mFlag = 0;
+        this.gameObject.GetComponent<AudioManager>().ChangeVolume(0.3f, 0.3f);
+        AudioManager.Instance.PlayBGM("Main");
 
-        mDifferenceWeight = 0f;
-        mLeanGain = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (sceneFlag == SceneFlag.Playing && mFlag == 0)
+        {
+            mFlag = 1;
+
+            Timer = 0f;
+            playerWeight = 0f;
+            enemyWeight = 0f;
+            mAudioManager = this.gameObject.GetComponent<AudioManager>();
+            mSeeSaw = GameObject.Find("GameStage/SeeSawView/WholeSeeSaw/SeeSaw");
+            mPlayerBox = GameObject.Find("GameStage/PlayerView/PlayerBoxes");
+            mEnemyBox = GameObject.Find("GameStage/EnemyView/EnemyBoxes");
+
+            mDifferenceWeight = 0f;
+            mLeanGain = 0f;
+        }
+
         if (sceneFlag == SceneFlag.Playing)
         {
             Timer += Time.deltaTime;
@@ -55,16 +65,36 @@ public class GameManager : MonoBehaviour
             mDifferenceWeight = (playerWeight - enemyWeight) * 100;
             mLeanGain = mDifferenceWeight / 150000f;
 
-            mSeeSaw.transform.Rotate(new Vector3(0f, 0f, mLeanGain));
-            mPlayerBox.transform.Rotate(new Vector3(-1 * mLeanGain, 0f, 0f));
-            mEnemyBox.transform.Rotate(new Vector3(0f, 0f, mLeanGain));
+            if (mSeeSaw == null)
+            {
+                mSeeSaw = GameObject.Find("GameStage/SeeSawView/WholeSeeSaw/SeeSaw");
+            }
+            else
+            {
+                mSeeSaw.transform.Rotate(new Vector3(0f, 0f, mLeanGain));
+            }
 
+            if (mPlayerBox == null)
+            {
+                mPlayerBox = GameObject.Find("GameStage/PlayerView/PlayerBoxes");
+            }
+            else
+            {
+                mPlayerBox.transform.Rotate(new Vector3(-1 * mLeanGain, 0f, 0f));
+            }
+
+            if (mEnemyBox == null)
+            {
+                mEnemyBox = GameObject.Find("GameStage/EnemyView/EnemyBoxes");
+            }
+            else
+            {
+                mEnemyBox.transform.Rotate(new Vector3(0f, 0f, mLeanGain));
+            }
         }
 
-        else if(sceneFlag == SceneFlag.Finish)
+        else if (sceneFlag == SceneFlag.Finish)
         {
-            finishTime = Timer;
-
             mAudioManager.FadeOutBGM();
             AudioManager.Instance.PlaySE("Finish");
 
@@ -72,6 +102,27 @@ public class GameManager : MonoBehaviour
             sceneFlag = SceneFlag.PreResult;
             Invoke("ResultSceneLoad", 3.0f);
 
+        }
+
+        else if (sceneFlag == SceneFlag.Result)
+        {
+            if (mResultTime == null)
+            {
+                mResultTime = GameObject.Find("Result/Canvas/Text").GetComponent<Text>();
+            }
+            else
+            {
+                mResultTime.text = "Result : " + Timer.ToString("F2");
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                mAudioManager.StopBGM();
+                AudioManager.Instance.PlayBGM("Main");
+                mFlag = 0;
+                sceneFlag = SceneFlag.Title;
+                SceneManager.LoadScene("Title");
+            }
         }
 
         
