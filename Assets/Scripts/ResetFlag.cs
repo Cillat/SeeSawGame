@@ -10,7 +10,7 @@ public class ResetFlag : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mPlayer = GameObject.Find("GameStage/GameManager").GetComponent<Player>();
+        mPlayer = GameObject.Find("GameStage/GameController").GetComponent<Player>();
         collisionFlag = 0;
     }
 

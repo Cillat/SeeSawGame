@@ -22,8 +22,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameStage/GameManager").GetComponent<GameManager>();
-        mAnimal = GameObject.Find("GameStage/GameManager").GetComponent<Animal>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        mAnimal = GameObject.Find("GameStage/GameController").GetComponent<Animal>();
         mCamera = GameObject.Find("GameStage/PlayerView/PlayerCamera").GetComponent<Camera>();
         mPlayerChoice = null;
         mAnimalNum = new int[3];

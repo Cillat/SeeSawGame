@@ -22,7 +22,7 @@ public class DestroyEnemyAnimal : MonoBehaviour
         {
             this.gameObject.GetComponent<EnemyAnimalWeight>().minus();
             Destroy(gameObject);
-            Debug.Log("Destroy");
+            //Debug.Log("Destroy");
         }
     }
 }

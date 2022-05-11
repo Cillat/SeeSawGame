@@ -16,8 +16,8 @@ public class PlayerAnimalWeight : MonoBehaviour
         mAnimalName = this.gameObject.name.Replace("(Clone)(Clone)","");
         mPlusFlag = 0;
 
-        mGamemanager = GameObject.Find("GameStage/GameManager").GetComponent<GameManager>();
-        mAnimal = GameObject.Find("GameStage/GameManager").GetComponent<Animal>();
+        mGamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        mAnimal = GameObject.Find("GameStage/GameController").GetComponent<Animal>();
         mWeight = mAnimal.animals.Find(animal => mAnimalName == animal.name).weight;
 
          
