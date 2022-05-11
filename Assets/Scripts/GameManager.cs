@@ -108,14 +108,14 @@ public class GameManager : MonoBehaviour
         {
             if (mResultTime == null)
             {
-                mResultTime = GameObject.Find("Result/Canvas/Text").GetComponent<Text>();
+                mResultTime = GameObject.Find("Result/Canvas/FinishTime").GetComponent<Text>();
             }
             else
             {
                 mResultTime.text = "Result : " + Timer.ToString("F2");
             }
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 mAudioManager.StopBGM();
                 AudioManager.Instance.PlayBGM("Main");
