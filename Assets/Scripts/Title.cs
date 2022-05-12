@@ -9,6 +9,7 @@ public class Title : MonoBehaviour
     void Start()
     {
         AudioManager.Instance.PlayBGM("Main");
+        AudioManager.Instance.ChangeVolume(0.2f, 0.3f);
     }
 
     // Update is called once per frame

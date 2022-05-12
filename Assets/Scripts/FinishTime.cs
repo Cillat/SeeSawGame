@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinishTime : MonoBehaviour
 {
@@ -11,15 +12,23 @@ public class FinishTime : MonoBehaviour
     void Start()
     {
         //DontDestroyOnLoad(gameObject);
-        mGameManager = GameObject.Find("GameStage/GameManager").GetComponent<GameManager>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(mGameManager.sceneFlag == GameManager.SceneFlag.Result)
+        if (mGameManager.sceneFlag == GameManager.SceneFlag.Result && Input.GetKeyDown(KeyCode.R))
         {
-            resultTime = mGameManager.finishTime;
+            mGameManager.sceneFlag = GameManager.SceneFlag.ReTry;
+            GameObject.Find("AudioManager").GetComponent<AudioManager>().StopBGM();
+            SceneManager.LoadScene("Title");
+           
         }
+    }
+
+    public void FindGameManager()
+    {
+        mGameManager = GameObject.Find("GameStage/GameManager").GetComponent<GameManager>();
     }
 }

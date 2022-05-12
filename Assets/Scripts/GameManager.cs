@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
         Playing,
         Finish,
         PreResult,
-        Result
+        Result,
+        ReTry
     }
 
     public SceneFlag sceneFlag;
@@ -39,8 +40,14 @@ public class GameManager : MonoBehaviour
         mSeeSaw = GameObject.Find("GameStage/SeeSawView/WholeSeeSaw/SeeSaw");
         mPlayerBox = GameObject.Find("GameStage/PlayerView/PlayerBoxes");
         mEnemyBox = GameObject.Find("GameStage/EnemyView/EnemyBoxes");
-        mAudioManager_obj.AddComponent<FinishTime>();
 
+        if (mAudioManager.GetComponent<FinishTime>() == null)
+        {
+            mAudioManager_obj.AddComponent<FinishTime>();
+        }
+
+        mAudioManager_obj.GetComponent<FinishTime>().FindGameManager();
+        
         mDifferenceWeight = 0f;
         mLeanGain = 0f;
     }
@@ -81,6 +88,7 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.Instance.PlayBGM("Result");
         sceneFlag = SceneFlag.Result;
+        mAudioManager_obj.GetComponent<FinishTime>().resultTime = finishTime;
         SceneManager.LoadScene("Result");
     }
 

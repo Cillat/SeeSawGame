@@ -22,7 +22,7 @@ public class RandomSpawn : MonoBehaviour
         Random.InitState(System.DateTime.Now.Millisecond);
 
         mAnimal = GameObject.Find("GameStage/GameManager").GetComponent<Animal>();
-        timeSpan = 7f;
+        timeSpan = 5f;
         mTime = 0f;
         mCount = 0;
 

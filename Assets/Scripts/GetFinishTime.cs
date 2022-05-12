@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class GetFinishTime : MonoBehaviour
 {
     public Text resultTime;
+    public float finishTime;
 
-    private float mFinishTime;
     private FinishTime mGetFinishTime;
 
     // Start is called before the first frame update
@@ -15,20 +15,19 @@ public class GetFinishTime : MonoBehaviour
     {
         resultTime = this.gameObject.GetComponent<Text>();
         mGetFinishTime = GameObject.Find("AudioManager").GetComponent<FinishTime>();
-        mFinishTime = mGetFinishTime.resultTime;
-        Debug.Log(mFinishTime);
-        resultTime.text = "Result :" + mFinishTime.ToString("F4");
+        finishTime = mGetFinishTime.resultTime;
+        resultTime.text = "Result : " + finishTime.ToString("F2");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (mFinishTime == 0f)
+        if (finishTime == 0f)
         {
+            resultTime = this.gameObject.GetComponent<Text>();
             mGetFinishTime = GameObject.Find("AudioManager").GetComponent<FinishTime>();
-            mFinishTime = mGetFinishTime.resultTime;
-            Debug.Log(mFinishTime);
-            resultTime.text = "Result :" + mFinishTime.ToString("F2");
+            finishTime = mGetFinishTime.resultTime;
+            resultTime.text = "Result : " + finishTime.ToString("F2");
         }
     }
 }
