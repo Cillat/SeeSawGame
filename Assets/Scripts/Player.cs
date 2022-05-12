@@ -53,14 +53,14 @@ public class Player : MonoBehaviour
         //Debug.Log(mMousePos);
         mMouseWheelScroll = Input.GetAxis("Mouse ScrollWheel");
 
-        if (mMouseWheelScroll > 0f)
+        if (mMouseWheelScroll < 0f)
         {
             if (mMouseDepth > 15.2f)
             {
                 mMouseDepth -= 0.5f;
             }
         }
-        else if (mMouseWheelScroll < 0f)
+        else if (mMouseWheelScroll > 0f)
         {
             if (mMouseDepth < 23.0f)
             {
