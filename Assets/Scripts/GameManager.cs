@@ -20,9 +20,9 @@ public class GameManager : MonoBehaviour
     public float enemyWeight;
 
     private AudioManager mAudioManager;
-    public GameObject mSeeSaw;
-    public GameObject mPlayerBox;
-    public GameObject mEnemyBox;
+    private GameObject mSeeSaw;
+    private GameObject mPlayerBox;
+    private GameObject mEnemyBox;
     private Text mResultTime;
     private static  float mPlayTime = 0f;
     private float mDifferenceWeight;
