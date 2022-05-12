@@ -48,7 +48,7 @@ public class RandomSpawn : MonoBehaviour
 
             mCount += 1;
 
-            if (mCount > 4)
+            if (mCount > 5)
             {
                 if(timeSpan > 1f)
                 {
