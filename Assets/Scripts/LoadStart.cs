@@ -20,6 +20,7 @@ public class LoadStart : MonoBehaviour
 
     public void OnClick()
     {
+        AudioManager.Instance.PlaySE("Clicked");
         mGameManager.sceneFlag = GameManager.SceneFlag.Playing;
         SceneManager.LoadScene("SeeSawGame");
     }
