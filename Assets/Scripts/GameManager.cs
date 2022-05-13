@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour
 
         else if (sceneFlag == SceneFlag.Result)
         {
+
             if (mResultTime == null)
             {
                 mResultTime = GameObject.Find("Result/Canvas/FinishTime").GetComponent<Text>();
@@ -131,8 +132,8 @@ public class GameManager : MonoBehaviour
     void ResultSceneLoad()
     {
         AudioManager.Instance.PlayBGM("Result");
-        sceneFlag = SceneFlag.Result;
         SceneManager.LoadScene("Result");
+        sceneFlag = SceneFlag.Result;
     }
 
     public float Timer
