@@ -14,9 +14,9 @@ public class ResultRanking : MonoBehaviour
         mGameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         mMinute = (int)mGameManager.Timer / 60;
         mSecond = (int)mGameManager.Timer - mMinute * 60;
-        mMillSecond = (int)(mGameManager.Timer - Mathf.Floor(mGameManager.Timer)) * 100;
+        mMillSecond = (int)((mGameManager.Timer - (mMinute * 60) - mSecond) * 100);
 
-        var timeScore = new System.TimeSpan(0, 0, mMinute, mSecond, mMillSecond);
+        var timeScore = new System.TimeSpan(mMinute, mSecond, mMillSecond);
         naichilab.RankingLoader.Instance.SendScoreAndShowRanking(timeScore);
     }
 
