@@ -236,6 +236,7 @@ namespace naichilab
 
         public void OnCloseButtonClick()
         {
+            AudioManager.Instance.PlaySE("Cancel");
             closeButton.interactable = false;
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Ranking");
         }

@@ -31,14 +31,14 @@ public class GameManager : MonoBehaviour
     private float mDifferenceWeight;
     private float mLeanGain;
     string mSecondString;
+    string mMillSecondString;
     private int mFlag;
-    private int mSecondFlag;
+
 
     // Start is called before the first frame update
     void Start()
     {
         mFlag = 0;
-        mSecondFlag = 0;
         minute = 0;
         second = 0;
         millSecond = 0;
@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
         if (sceneFlag == SceneFlag.Playing && mFlag == 0)
         {
             mFlag = 1;
-            mSecondFlag = 0;
             minute = 0;
             second = 0;
             millSecond = 0;
@@ -120,8 +119,20 @@ public class GameManager : MonoBehaviour
 
             if ( second  < 10 )
             {
-                mSecondFlag = 1;
                 mSecondString = "0" + second.ToString();
+            }
+            else
+            {
+                mSecondString = second.ToString();
+            }
+
+            if ( millSecond < 10)
+            {
+                mMillSecondString = "0" + millSecond.ToString();
+            }
+            else
+            {
+                mMillSecondString = millSecond.ToString();
             }
 
             sceneFlag = SceneFlag.PreResult;
@@ -138,15 +149,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                if (mSecondFlag == 1)
-                {
-                    mResultTime.text = "Result : " + minute.ToString() + ":" + mSecondString + ":" + millSecond.ToString();
-                }
-
-                else
-                {
-                    mResultTime.text = "Result : " + minute.ToString() + ":" + second.ToString() + ":" + millSecond.ToString();
-                }
+                mResultTime.text = "Result" + " : " + minute.ToString() + ":" + mSecondString + ":" + mMillSecondString;
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
