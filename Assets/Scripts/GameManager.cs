@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public int minute;
     public int second;
     public int millSecond;
+    public int gameFlag;
 
     private AudioManager mAudioManager;
     private GameObject mSeeSaw;
@@ -32,13 +33,12 @@ public class GameManager : MonoBehaviour
     private float mLeanGain;
     string mSecondString;
     string mMillSecondString;
-    private int mFlag;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        mFlag = 0;
+        gameFlag = 0;
         minute = 0;
         second = 0;
         millSecond = 0;
@@ -50,9 +50,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (sceneFlag == SceneFlag.Playing && mFlag == 0)
+        if (sceneFlag == SceneFlag.Playing && gameFlag == 0)
         {
-            mFlag = 1;
+            gameFlag = 1;
             minute = 0;
             second = 0;
             millSecond = 0;
@@ -150,15 +150,6 @@ public class GameManager : MonoBehaviour
             else
             {
                 mResultTime.text = "Result" + " : " + minute.ToString() + ":" + mSecondString + ":" + mMillSecondString;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                mAudioManager.StopBGM();
-                AudioManager.Instance.PlayBGM("Main");
-                mFlag = 0;
-                sceneFlag = SceneFlag.Title;
-                SceneManager.LoadScene("Title");
             }
         }
 
