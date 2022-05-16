@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
         }
         else if (mMouseWheelScroll > 0f)
         {
-            if (mMouseDepth < 23.0f)
+            if (mMouseDepth < 22.5f)
             {
                 mMouseDepth += 0.5f;
             }
