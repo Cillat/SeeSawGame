@@ -16,4 +16,4 @@ MonoBehaviour:
   ClassName: HiScore
   Type: 1
   Order: 1
-  CustomFormat: 
+  CustomFormat: m:ss:fff

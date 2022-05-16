@@ -5,18 +5,12 @@ using UnityEngine;
 public class ResultRanking : MonoBehaviour
 {
     private GameManager mGameManager;
-    private int mMinute;
-    private int mSecond;
-    private int mMillSecond;
 
     void Start()
     {
         mGameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        mMinute = (int)mGameManager.Timer / 60;
-        mSecond = (int)mGameManager.Timer - mMinute * 60;
-        mMillSecond = (int)((mGameManager.Timer - (mMinute * 60) - mSecond) * 100);
 
-        var timeScore = new System.TimeSpan(mMinute, mSecond, mMillSecond);
+        var timeScore = new System.TimeSpan(0, 0, mGameManager.minute, mGameManager.second, mGameManager.millSecond);
         naichilab.RankingLoader.Instance.SendScoreAndShowRanking(timeScore);
     }
 
